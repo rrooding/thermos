@@ -19,7 +19,7 @@ defmodule Wunderground.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [mod: {Wunderground, []},
-     applications: [:logger, :httpoison, :poison]]
+     applications: [:logger, :httpoison, :poison, :timex]]
   end
 
   # Dependencies can be Hex packages:
@@ -37,6 +37,7 @@ defmodule Wunderground.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [{:httpoison, "~> 0.10.0"},
-     {:poison, "~> 2.0"}]
+     {:poison, "~> 2.0"},
+     {:timex, "~> 3.0"}]
   end
 end

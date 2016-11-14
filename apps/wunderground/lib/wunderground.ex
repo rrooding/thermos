@@ -8,8 +8,7 @@ defmodule Wunderground do
 
     # Define workers and child supervisors to be supervised
     children = [
-      # Starts a worker by calling: Wunderground.Worker.start_link(arg1, arg2, arg3)
-      # worker(Wunderground.Worker, [arg1, arg2, arg3]),
+      worker(Wunderground.Stash, []),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
