@@ -10,8 +10,7 @@ defmodule Thermos.Web do
     children = [
       # Start the endpoint when the application starts
       supervisor(Thermos.Web.Endpoint, []),
-      # Start your own worker by calling: Thermos.Web.Worker.start_link(arg1, arg2, arg3)
-      # worker(Thermos.Web.Worker, [arg1, arg2, arg3]),
+      supervisor(Thermos.Web.OutsideConditions.Supervisor, []),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

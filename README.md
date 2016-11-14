@@ -79,3 +79,6 @@ printf '#!/bin/bash\nmkdir -p /var/log/grafana\nexec svlogd -tt /var/log/grafana
 chmod 755 log/run
  
 ln -s /etc/sv/grafana /etc/service/grafana
+
+#### Elixir
+http://www.antonfagerberg.com/blog/elixir-on-raspberry-pi/
