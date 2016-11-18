@@ -1,6 +1,8 @@
 defmodule Wunderground.Client do
-  alias Wunderground.API
+  alias Wunderground.API2
   alias Wunderground.Stash
+
+  require Logger
 
   def current_weather(city, country) do
     Stash.get_age(city, country)
@@ -19,12 +21,17 @@ defmodule Wunderground.Client do
   end
 
   defp fetch(city, country) do
-    API.current_weather(city, country)
+    API2.current_weather(city, country)
     |> update_cache(city, country)
   end
 
   defp update_cache({:ok, current_weather}, city, country) do
     Stash.save_current_weather(city, country, current_weather)
     current_weather
+  end
+
+  defp update_cache({:error, response}, _city, _country) do
+    Logger.warn "Could not fetch current weather:\n" <> (inspect response)
+    :error
   end
 end

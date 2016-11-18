@@ -17,6 +17,10 @@ config :web, Thermos.Web.Endpoint,
   server: true
   #cache_static_manifest: "priv/static/manifest.json"
 
+# Config DHT sensors
+config :web, Thermos.Web.Sensors,
+  dht22_bin: "fake_adafruit/fake_adafruit.sh"
+
 # Do not print debug messages in production
 config :logger, level: :info
 

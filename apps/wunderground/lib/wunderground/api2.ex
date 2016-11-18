@@ -1,4 +1,4 @@
-defmodule Wunderground.API do
+defmodule Wunderground.API2 do
   @api_key Application.get_env(:wunderground, :api_key)
 
   require Logger
@@ -12,13 +12,14 @@ defmodule Wunderground.API do
 
   defp url(city, country) do
     #"http://api.wunderground.com/api/#{@api_key}/conditions/q/#{country}/#{city}.json"
-    "http://api.wunderground.com/api/#{@api_key}/conditions/q/pws:IEINDHOV17.json"
+    #"http://api.wunderground.com/api/#{@api_key}/conditions/q/pws:IEINDHOV17.json"
+    "http://api.openweathermap.org/data/2.5/weather?q=Eindhoven,NL&appid=#{@api_key}&units=metric"
   end
 
   defp handle_response({:ok, response}) do
     response.body
     |> Poison.decode!
-    |> Map.fetch("current_observation")
+    |> Map.fetch("main")
     |> parse(response)
     |> respond
   end
@@ -44,15 +45,14 @@ defmodule Wunderground.API do
   defp respond(current_weather), do: {:ok, current_weather}
 
   defp read_temperature(current_weather, data) do
-    %Wunderground.CurrentWeather{current_weather | temperature: data["temp_c"]}
+    %Wunderground.CurrentWeather{current_weather | temperature: data["temp"] / 1}
   end
 
   defp read_humidity(current_weather, data) do
-    {humidity, _} = Integer.parse(data["relative_humidity"])
-    %Wunderground.CurrentWeather{current_weather | relative_humidity: humidity}
+    %Wunderground.CurrentWeather{current_weather | relative_humidity: data["humidity"] / 1}
   end
 
   defp read_air_pressure(current_weather, data) do
-    %Wunderground.CurrentWeather{current_weather | air_pressure: String.to_integer(data["pressure_mb"])}
+    %Wunderground.CurrentWeather{current_weather | air_pressure: data["pressure"] / 1}
   end
 end

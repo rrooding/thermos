@@ -13,6 +13,8 @@ config :web, Thermos.Web.Endpoint,
   check_origin: false,
   watchers: []
 
+config :web, Thermos.Web.Sensors,
+  dht22_bin: "fake_adafruit/fake_adafruit.sh"
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
