@@ -4,7 +4,7 @@ defmodule Wunderground.API2 do
   require Logger
 
   def current_weather(city, country) do
-    Logger.debug("Fetching current weather: " <> @api_key)
+    Logger.info("Fetching current weather: " <> @api_key)
     url(city, country)
     |> HTTPoison.get
     |> handle_response
@@ -13,6 +13,7 @@ defmodule Wunderground.API2 do
   defp url(city, country) do
     #"http://api.wunderground.com/api/#{@api_key}/conditions/q/#{country}/#{city}.json"
     #"http://api.wunderground.com/api/#{@api_key}/conditions/q/pws:IEINDHOV17.json"
+    Logger.info("Fetching current weather: " <> "http://api.openweathermap.org/data/2.5/weather?q=Eindhoven,NL&appid=#{@api_key}&units=metric")
     "http://api.openweathermap.org/data/2.5/weather?q=Eindhoven,NL&appid=#{@api_key}&units=metric"
   end
 

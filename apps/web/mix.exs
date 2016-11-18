@@ -21,7 +21,7 @@ defmodule Thermos.Web.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Thermos.Web, []},
-     applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext, :wunderground]]
+     applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext, :wunderground, :instream]]
   end
 
   # Specifies which paths to compile per environment.

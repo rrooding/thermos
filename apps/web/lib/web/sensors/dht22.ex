@@ -6,6 +6,7 @@ defmodule Thermos.Web.Sensors.DHT22 do
   def read(pin) when is_integer(pin), do: Integer.to_string(pin) |> read
 
   def read(pin) when is_binary(pin) do
+    Logger.info("Running for inside: " <> application)
     System.cmd(application, ["22", pin])
     |> handle_output
   end

@@ -19,7 +19,7 @@ config :web, Thermos.Web.Endpoint,
 
 # Config DHT sensors
 config :web, Thermos.Web.Sensors,
-  dht22_bin: "fake_adafruit/fake_adafruit.sh"
+  dht22_bin: "AdafruitDHT/AdafruitDHT.py"
 
 # Do not print debug messages in production
 config :logger, level: :info
