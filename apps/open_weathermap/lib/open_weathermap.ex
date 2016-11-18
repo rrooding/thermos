@@ -1,4 +1,4 @@
-defmodule Wunderground do
+defmodule OpenWeathermap do
   use Application
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
@@ -8,12 +8,12 @@ defmodule Wunderground do
 
     # Define workers and child supervisors to be supervised
     children = [
-      worker(Wunderground.Stash, []),
+      worker(OpenWeathermap.Stash, []),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Wunderground.Supervisor]
+    opts = [strategy: :one_for_one, name: OpenWeathermap.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end

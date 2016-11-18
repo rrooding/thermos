@@ -1,4 +1,4 @@
-# Wunderground
+# Open Weathermap
 
 **TODO: Add description**
 
@@ -6,19 +6,19 @@
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
 
-  1. Add `wunderground` to your list of dependencies in `mix.exs`:
+  1. Add `open_weathermap` to your list of dependencies in `mix.exs`:
 
     ```elixir
     def deps do
-      [{:wunderground, "~> 0.1.0"}]
+      [{:open_weathermap, "~> 0.1.0"}]
     end
     ```
 
-  2. Ensure `wunderground` is started before your application:
+  2. Ensure `open_weathermap` is started before your application:
 
     ```elixir
     def application do
-      [applications: [:wunderground]]
+      [applications: [:open_weathermap]]
     end
     ```
 

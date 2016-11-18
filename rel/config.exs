@@ -34,7 +34,7 @@ release :thermos do
   set version: current_version(:web)
   set applications: [
     web: :permanent,
-    wunderground: :permanent
+    open_weathermap: :permanent
   ]
 end
 

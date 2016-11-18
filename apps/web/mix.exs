@@ -21,7 +21,7 @@ defmodule Thermos.Web.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Thermos.Web, []},
-     applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext, :wunderground, :instream]]
+     applications: [:phoenix, :phoenix_pubsub, :cowboy, :logger, :gettext, :open_weathermap, :instream]]
   end
 
   # Specifies which paths to compile per environment.
@@ -37,6 +37,6 @@ defmodule Thermos.Web.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:instream, "~> 0.13"},
-     {:wunderground, in_umbrella: true}]
+     {:open_weathermap, in_umbrella: true}]
   end
 end

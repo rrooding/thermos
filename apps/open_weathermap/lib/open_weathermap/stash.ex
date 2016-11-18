@@ -1,4 +1,4 @@
-defmodule Wunderground.Stash do
+defmodule OpenWeathermap.Stash do
   use GenServer
 
   require Logger

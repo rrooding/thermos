@@ -16,7 +16,8 @@ defmodule Thermos.Web.OutsideConditions.Worker do
   end
 
   def handle_info(:work, state) do
-    Wunderground.Client.current_weather("Eindhoven", "Netherlands")
+    # TODO: Read location from config
+    OpenWeathermap.Client.current_weather("Eindhoven", "NL")
     |> save_to_influx
     |> save_to_cache
 

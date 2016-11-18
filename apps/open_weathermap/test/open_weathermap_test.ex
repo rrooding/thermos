@@ -1,6 +1,6 @@
-defmodule WundergroundTest do
+defmodule OpenWeathermapTest do
   use ExUnit.Case
-  doctest Wunderground
+  doctest OpenWeathermap
 
   test "the truth" do
     assert 1 + 1 == 2

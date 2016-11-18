@@ -1,6 +1,6 @@
-defmodule Wunderground.Client do
-  alias Wunderground.API2
-  alias Wunderground.Stash
+defmodule OpenWeathermap.Client do
+  alias OpenWeathermap.API
+  alias OpenWeathermap.Stash
 
   require Logger
 
@@ -21,7 +21,7 @@ defmodule Wunderground.Client do
   end
 
   defp fetch(city, country) do
-    API2.current_weather(city, country)
+    API.current_weather(city, country)
     |> update_cache(city, country)
   end
 
