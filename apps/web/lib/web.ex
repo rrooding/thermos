@@ -10,9 +10,6 @@ defmodule Thermos.Web do
     children = [
       # Start the endpoint when the application starts
       supervisor(Thermos.Web.Endpoint, []),
-      supervisor(Thermos.Web.OutsideConditions.Supervisor, []),
-      supervisor(Thermos.Web.InsideConditions.Supervisor, []),
-      Thermos.Web.Instream.Connection.child_spec,
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

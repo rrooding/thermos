@@ -7,5 +7,8 @@ defmodule Thermos.Web.Router do
 
   scope "/api", Thermos.Web do
     pipe_through :api
+
+    get "/setpoint", SetpointController, :show
+    put "/setpoint", SetpointController, :update
   end
 end

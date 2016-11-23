@@ -1,6 +1,4 @@
-defmodule Thermos.Web.OutsideConditions.LatestObservation do
-  require Logger
-
+defmodule Thermos.Thermostat.Inside.LatestObservation do
   use GenServer
 
   @vsn "0"

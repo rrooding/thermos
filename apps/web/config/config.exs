@@ -11,7 +11,7 @@ config :web,
 
 # Configures the endpoint
 config :web, Thermos.Web.Endpoint,
-  url: [host: "localhost"],
+  url: [host: "localhost", port: 4000],
   secret_key_base: "taM6LxvNZ0lAbZbeh9zDgcbAc31m3vpqZI1AJuy7J7jAoGc9Xd2JCcsUb1pYUboC",
   render_errors: [view: Thermos.Web.ErrorView, accepts: ~w(json)],
   pubsub: [name: Thermos.Web.PubSub,
