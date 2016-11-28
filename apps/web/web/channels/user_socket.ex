@@ -2,7 +2,7 @@ defmodule Thermos.Web.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  channel "thermostat", Thermos.Web.ThermostatChannel
+  # channel "room:*", Thermos.Web.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

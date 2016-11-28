@@ -34,7 +34,7 @@ defmodule Thermos.Web.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_web_key",
-    signing_salt: "zO1JiTCz"
+    signing_salt: "dwCydGuR"
 
   plug Thermos.Web.Router
 end

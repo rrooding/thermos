@@ -12,7 +12,7 @@ config :web,
 # Configures the endpoint
 config :web, Thermos.Web.Endpoint,
   url: [host: "localhost", port: 4000],
-  secret_key_base: "taM6LxvNZ0lAbZbeh9zDgcbAc31m3vpqZI1AJuy7J7jAoGc9Xd2JCcsUb1pYUboC",
+  secret_key_base: "lO1wtLOwWhOZPmOb7k+uEWWalCZc9mYwZw7T0Uuexr3h5TRA0zFq4w4jIiC5uvbq",
   render_errors: [view: Thermos.Web.ErrorView, accepts: ~w(json)],
   pubsub: [name: Thermos.Web.PubSub,
            adapter: Phoenix.PubSub.PG2]
@@ -21,11 +21,6 @@ config :web, Thermos.Web.Endpoint,
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
-
-# Instream configuration
-config :web, Thermos.Web.Instream.Connection,
-  host: "localhost",
-  port: 8086
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

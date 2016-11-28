@@ -31,7 +31,7 @@ end
 # will be used by default
 
 release :thermos do
-  set version: current_version(:web)
+  set version: current_version(:thermostat)
   set applications: [
     web: :permanent,
     open_weathermap: :permanent

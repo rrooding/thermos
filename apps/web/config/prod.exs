@@ -14,12 +14,7 @@ use Mix.Config
 config :web, Thermos.Web.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [host: "localhost", port: {:system, "PORT"}],
-  server: true
   #cache_static_manifest: "priv/static/manifest.json"
-
-# Config DHT sensors
-config :web, Thermos.Web.Sensors,
-  dht22_bin: "AdafruitDHT/AdafruitDHT.py"
 
 # Do not print debug messages in production
 config :logger, level: :info

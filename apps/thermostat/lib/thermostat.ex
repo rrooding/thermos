@@ -9,9 +9,10 @@ defmodule Thermos.Thermostat do
     # Define workers and child supervisors to be supervised
     children = [
       Thermos.Thermostat.Influx.Connection.child_spec,
-      worker(Thermos.Thermostat.Setpoint.Supervisor, []),
-      worker(Thermos.Thermostat.Outside.Supervisor, []),
-      worker(Thermos.Thermostat.Inside.Supervisor, []),
+      supervisor(Thermos.Thermostat.Setpoint.Supervisor, []),
+      supervisor(Thermos.Thermostat.Outside.Supervisor, []),
+      supervisor(Thermos.Thermostat.Inside.Supervisor, []),
+      supervisor(Thermos.Thermostat.Controller.Supervisor, []),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

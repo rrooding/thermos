@@ -8,6 +8,7 @@ defmodule Thermos.Thermostat.Scheduler do
   - `:function`: The function to call
   - `:args`: A list of arguments to pass to the function
   - `:interval`: The time interval in milliseconds to rerun the function
+  - `:start_delayed`: When false, it triggers the function immediately, and then starts the interval, otherwise it will first wait the full interval.
 
   ## Example
 
@@ -43,9 +44,12 @@ defmodule Thermos.Thermostat.Scheduler do
     {:ok, pid}
   end
 
-  def init(state) do
-    :timer.apply_after(100, __MODULE__, :perform, [self()])
-    {:ok, state}
+  def init(opts) do
+    if !Keyword.get(opts, :start_delayed, false) do
+      :timer.apply_after(100, __MODULE__, :perform, [self()])
+    end
+
+    {:ok, opts}
   end
 
   def perform(scheduler), do: GenServer.cast(scheduler, :perform)
