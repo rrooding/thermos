@@ -14,7 +14,7 @@ use Mix.Config
 config :web, Thermos.Web.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [host: "localhost", port: {:system, "PORT"}],
-  #cache_static_manifest: "priv/static/manifest.json"
+  server: true
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -42,20 +42,7 @@ config :logger, level: :info
 #       force_ssl: [hsts: true]
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
-
-# ## Using releases
 #
-# If you are doing OTP releases, you need to instruct Phoenix
-# to start the server for all endpoints:
-#
-#     config :phoenix, :serve_endpoints, true
-#
-# Alternatively, you can configure exactly which server to
-# start per endpoint:
-#
-#     config :web, Thermos.Web.Endpoint, server: true
-#
-
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
 import_config "prod.secret.exs"

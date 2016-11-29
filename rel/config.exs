@@ -33,8 +33,10 @@ end
 release :thermos do
   set version: current_version(:thermostat)
   set applications: [
+    thermostat: :permanent,
     web: :permanent,
-    open_weathermap: :permanent
+    open_weathermap: :permanent,
+    sensors: :permanent,
   ]
 end
 
