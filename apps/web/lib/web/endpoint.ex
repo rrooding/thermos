@@ -36,5 +36,8 @@ defmodule Thermos.Web.Endpoint do
     key: "_web_key",
     signing_salt: "dwCydGuR"
 
+
+  plug CORSPlug
+
   plug Thermos.Web.Router
 end

@@ -36,6 +36,7 @@ defmodule Thermos.Web.Mixfile do
      {:phoenix_pubsub, "~> 1.0"},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
+     {:cors_plug, "~> 1.1"},
      {:utils, in_umbrella: true},
      {:thermostat, in_umbrella: true}]
   end

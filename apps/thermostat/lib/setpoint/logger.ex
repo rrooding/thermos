@@ -3,12 +3,10 @@ defmodule Thermos.Thermostat.Setpoint.Logger do
 
   alias Thermos.Thermostat.Influx.Observation
   alias Thermos.Thermostat.Setpoint.Server
-  alias Thermos.Thermostat.Setpoint.Hysteresis
 
   def perform do
     Server.get_setpoint
     |> save_to_influx
-    |> Hysteresis.save_to_influx
   end
 
   defp save_to_influx(:error), do: :error

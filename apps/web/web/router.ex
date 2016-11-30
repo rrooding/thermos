@@ -10,5 +10,6 @@ defmodule Thermos.Web.Router do
 
     get "/setpoint", SetpointController, :show
     put "/setpoint", SetpointController, :update
+    post "/setpoint", SetpointController, :update
   end
 end
