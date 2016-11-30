@@ -12,6 +12,9 @@ defmodule Thermos.Web do
       supervisor(Thermos.Web.Endpoint, []),
       # Start your own worker by calling: Thermos.Web.Worker.start_link(arg1, arg2, arg3)
       # worker(Thermos.Web.Worker, [arg1, arg2, arg3]),
+      worker(Thermos.Utils.Scheduler, [[
+               module: Thermos.Web.ThermostatChannelBroadcaster,
+               function: :perform, args: [], interval: 10_000, start_delayed: true ]])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

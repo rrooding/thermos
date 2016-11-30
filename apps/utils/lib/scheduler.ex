@@ -1,4 +1,4 @@
-defmodule Thermos.Thermostat.Scheduler do
+defmodule Thermos.Utils.Scheduler do
   @moduledoc """
   Schedule a function to call at a given interval in milliseconds
 
@@ -14,7 +14,7 @@ defmodule Thermos.Thermostat.Scheduler do
 
   In a supervisor:
 
-    worker(Thermos.Thermostat.Scheduler, [[
+    worker(Thermos.Utils.Scheduler, [[
       module: Thermos.Thermostat.Worker,
       function: :do_something,
       args: [],
@@ -23,7 +23,7 @@ defmodule Thermos.Thermostat.Scheduler do
 
   On its own:
 
-    Thermos.Thermostat.Scheduler.start_link([[
+    Thermos.Utils.Scheduler.start_link([[
       module: Thermos.Thermostat.Worker,
       function: :do_something,
       args: [],

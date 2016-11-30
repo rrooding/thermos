@@ -37,6 +37,7 @@ release :thermos do
     web: :permanent,
     open_weathermap: :permanent,
     sensors: :permanent,
+    utils: :permanent,
   ]
 end
 

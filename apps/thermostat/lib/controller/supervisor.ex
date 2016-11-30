@@ -12,7 +12,7 @@ defmodule Thermos.Thermostat.Controller.Supervisor do
   defp child_processes do
     [
       worker(Thermos.Thermostat.Controller.Stash, []),
-      worker(Thermos.Thermostat.Scheduler, [[
+      worker(Thermos.Utils.Scheduler, [[
                module: Thermos.Thermostat.Controller.Worker,
                function: :perform, args: [], interval: 30_000, start_delayed: true ]])
     ]

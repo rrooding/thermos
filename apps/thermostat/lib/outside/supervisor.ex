@@ -12,7 +12,7 @@ defmodule Thermos.Thermostat.Outside.Supervisor do
   defp child_processes do
     [
       worker(Thermos.Thermostat.Outside.LatestObservation, []),
-      worker(Thermos.Thermostat.Scheduler, [[
+      worker(Thermos.Utils.Scheduler, [[
                module: Thermos.Thermostat.Outside.Worker,
                function: :perform, args: [], interval: 300_000 ]])
     ]

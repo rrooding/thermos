@@ -1,29 +1,40 @@
 defmodule Thermos.Web.ThermostatChannel do
   use Thermos.Web.Web, :channel
 
-  def join("thermostat:lobby", payload, socket) do
-    if authorized?(payload) do
-      {:ok, socket}
-    else
-      {:error, %{reason: "unauthorized"}}
-    end
+  alias Thermos.Web.Endpoint
+  alias Thermos.Thermostat.Inside.LatestObservation, as: Inside
+  alias Thermos.Thermostat.Setpoint.Server, as: Setpoint
+  alias Thermos.Thermostat.Controller.Stash, as: Thermostat
+
+  def join("thermostat", _payload, socket) do
+    send self, :after_join
+    {:ok, socket}
   end
 
-  # Channels can be used in a request/response fashion
-  # by sending replies to requests from the client
   def handle_in("ping", payload, socket) do
     {:reply, {:ok, payload}, socket}
   end
 
-  # It is also common to receive messages from the client and
-  # broadcast to everyone in the current topic (thermostat:lobby).
-  def handle_in("shout", payload, socket) do
-    broadcast socket, "shout", payload
+  def handle_info(:after_join, socket) do
+    broadcast_status(socket)
     {:noreply, socket}
   end
 
-  # Add authorization logic here as required.
-  defp authorized?(_payload) do
-    true
+  def broadcast_status(socket), do: broadcast socket, "new:msg", message
+  def broadcast_status, do: Endpoint.broadcast "thermostat", "new:msg", message
+
+  defp message do
+    %{
+      "temperature" => inside.temperature,
+      "relative_humidity" => inside.relative_humidity,
+      "setpoint" => setpoint,
+      "heating" => heating?
+    }
   end
+
+  defp inside, do: Inside.get_observation
+
+  defp setpoint, do: Setpoint.get_setpoint
+
+  defp heating?, do: Thermostat.get_state
 end
