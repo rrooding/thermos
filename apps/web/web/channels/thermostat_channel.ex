@@ -7,7 +7,7 @@ defmodule Thermos.Web.ThermostatChannel do
   alias Thermos.Thermostat.Controller.Stash, as: Thermostat
 
   def join("thermostat", _payload, socket) do
-    send self, :after_join
+    send self(), :after_join
     {:ok, socket}
   end
 
@@ -20,15 +20,15 @@ defmodule Thermos.Web.ThermostatChannel do
     {:noreply, socket}
   end
 
-  def broadcast_status(socket), do: broadcast socket, "new:msg", message
-  def broadcast_status, do: Endpoint.broadcast "thermostat", "new:msg", message
+  def broadcast_status(socket), do: broadcast socket, "new:msg", message()
+  def broadcast_status,         do: broadcast "thermostat", "new:msg", message()
 
   defp message do
     %{
-      "temperature" => inside.temperature,
-      "relative_humidity" => inside.relative_humidity,
-      "setpoint" => setpoint,
-      "heating" => heating?
+      "temperature" => inside().temperature,
+      "relative_humidity" => inside().relative_humidity,
+      "setpoint" => setpoint(),
+      "heating" => heating?()
     }
   end
 
