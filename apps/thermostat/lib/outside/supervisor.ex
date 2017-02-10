@@ -6,7 +6,7 @@ defmodule Thermos.Thermostat.Outside.Supervisor do
   end
 
   def init(_state) do
-    supervise child_processes, strategy: :one_for_one
+    supervise child_processes(), strategy: :one_for_one
   end
 
   defp child_processes do

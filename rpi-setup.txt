@@ -1,0 +1,49 @@
+sudo raspi-config
+	- Expand filesystem
+	- Change locale to en_us.UTF8
+	- Change timezone
+	- Change wifi country
+	- Enable SSH
+	- Enable I2C
+	
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+	Add
+	network={
+		ssid=""
+		psk=""
+	}
+	
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get update
+
+sudo apt-get install -y python-smbus git build-essential python-dev python-openssl i2c-tools
+
+sudo nano /etc/lightdm/lightdm.conf
+	Set xserver-command to "X -nocursor -s 0 dpms"
+
+sudo nano /etc/kbd/config
+	BLANK_TIME=0
+	POWERDOWN_TIME=0
+	
+sudo nano /boot/config.txt
+	dtparam=act_led_trigger=none
+	dtparam=act_led_activelow=off
+
+sudo nano /etc/modprobe.d/raspi-blacklist.conf
+	blacklist btbcm
+	blacklist hci_uart
+	blacklist snd_bcm2835
+
+git clone https://github.com/adafruit/Adafruit_Python_BMP.git
+cd Adafruit_Python_BMP
+sudo python setup.py install
+
+git clone https://github.com/adafruit/Adafruit_Python_DHT.git
+cd Adafruit_Python_DHT
+sudo python setup.py install
+
+
+
+
+Resistor between gpio and optocoupler can be 210 ohm, (3.3V - 1.2V)/10mA

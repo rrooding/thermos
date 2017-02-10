@@ -22,7 +22,7 @@ defmodule Thermos.Sensors.DHT22 do
   defp cmd, do: Path.join(Application.app_dir(:sensors, "priv"), @dht22_bin)
 
   defp exec_cmd(pin) when is_integer(pin), do: exec_cmd(Integer.to_string(pin))
-  defp exec_cmd(pin) when is_binary(pin),  do: System.cmd(cmd, [pin]) |> cmd_output
+  defp exec_cmd(pin) when is_binary(pin),  do: System.cmd(cmd(), [pin]) |> cmd_output
 
   defp cmd_output({output, 0}), do: output
 end
